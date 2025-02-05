@@ -1,0 +1,57 @@
+print("GAJI KARYAWAN CV ELANG CAHAYA SUKSES")
+print("Create By Nama Siswa")
+
+# Fungsi untuk menghitung gaji berdasarkan grade dan jam lembur
+def hitung_gaji(grade, jam_lembur):
+    # Daftar gaji pokok berdasarkan grade
+    gaji_pokok_dict = {
+        '2A': 1450000,
+        '2B': 1550000,
+        '2C': 1650000,
+        '2D': 1750000,
+        '2E': 1850000
+    }
+
+    # Cek apakah grade valid
+    if grade not in gaji_pokok_dict:
+        print("Grade tidak valid!")
+        return None
+
+    # Ambil gaji pokok berdasarkan grade
+    gaji_pokok = gaji_pokok_dict[grade]
+
+    # Hitung honor lembur
+    honor_lembur = (gaji_pokok / 273) * jam_lembur
+
+    # Hitung gaji kotor
+    gaji_kotor = gaji_pokok + honor_lembur
+
+    # Hitung pajak (2% dari gaji kotor)
+    pajak = gaji_kotor * 0.02
+
+    # Hitung potongan (0.5% dari gaji pokok)
+    potongan = gaji_pokok * 0.005
+
+    # Hitung gaji bersih
+    gaji_bersih = gaji_kotor - pajak - potongan
+
+    # Menampilkan hasil perhitungan
+    print("\n===== Slip Gaji Pegawai =====")
+    print(f"Grade: {grade}")
+    print(f"Gaji pokok: Rp {gaji_pokok:,.2f}")
+    print(f"Honor lembur: Rp {honor_lembur:,.2f}")
+    print(f"Gaji kotor: Rp {gaji_kotor:,.2f}")
+    print(f"Pajak (2%): Rp {pajak:,.2f}")
+    print(f"Potongan (0.5%): Rp {potongan:,.2f}")
+    print(f"Gaji bersih: Rp {gaji_bersih:,.2f}")
+    print(f"============================")
+    print()
+   
+# Input nama, grade, dan jam lembur dari pengguna
+nama = input("Masukkan nama: ")
+grade = input("Masukkan grade (2A, 2B, 2C, 2D, 2E): ").upper()
+jam_lembur = int(input("Masukkan jumlah jam lembur: "))
+
+# Memanggil fungsi untuk menghitung gaji
+hitung_gaji(grade, jam_lembur)
+
